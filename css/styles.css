@@ -2,9 +2,9 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   display: flex;
-  justify-content: center; /* Центрування по горизонталі */
-  align-items: center; /* Центрування по вертикалі */
-  height: 100vh; /* Задаємо висоту сторінки на весь екран */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .container {
@@ -22,7 +22,7 @@ body {
 }
 
 .gallery-item {
-  flex-basis: calc(33.333% - 16px); /* Відповідно до 3 рядків */
+  flex-basis: calc(33.333% - 16px);
 }
 
 .gallery-link {
@@ -32,15 +32,12 @@ body {
 
 .gallery-image {
   display: block;
-  width: 100%;
-  height: auto;
-  cursor: zoom-in;
   width: 360px;
   height: 200px;
+  cursor: zoom-in;
 }
 
-/* Курсор для зображення в збільшеному вигляді (лупа зі знаком "-") */
-.gallery-image.zoom-out {
+.modal-image {
   cursor: zoom-out;
 }
 

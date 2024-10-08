@@ -1,3 +1,5 @@
+'use strict';
+
 const images = [
   {
     preview:
@@ -66,7 +68,6 @@ const images = [
 
 const gallery = document.querySelector('.gallery');
 
-// Генеруємо розмітку галереї з елементів масиву
 const galleryMarkup = images
   .map(({ preview, original, description }) => {
     return `
@@ -85,17 +86,25 @@ const galleryMarkup = images
 
 gallery.innerHTML = galleryMarkup;
 
-// Заборона поведінки за замовчуванням для посилань
 gallery.addEventListener('click', event => {
   event.preventDefault();
+
   if (event.target.nodeName !== 'IMG') return;
 
   const largeImageURL = event.target.dataset.source;
 
-  // Модальне вікно з бібліотеки basicLightbox
-  const instance = basicLightbox.create(`
+  document.body.style.cursor = 'zoom-out';
+
+  const instance = basicLightbox.create(
+    `
     <img src="${largeImageURL}" width="1112" height="640">
-  `);
+  `,
+    {
+      onClose: () => {
+        document.body.style.cursor = 'default';
+      },
+    }
+  );
 
   instance.show();
 });
